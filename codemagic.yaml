@@ -12,7 +12,7 @@ workflows:
       - name: Build iOS app without signing
         script: |
           xcodebuild -workspace ios/App/App.xcworkspace \
-                      -scheme App \
+                      -scheme App \ # Cambia "App" si encuentras un nombre diferente de scheme
                       -sdk iphoneos \
                       -configuration Release \
                       -archivePath $HOME/build/App.xcarchive archive \
@@ -24,8 +24,8 @@ workflows:
                       -exportPath $HOME/build \
                       -exportOptionsPlist ios/App/ExportOptions.plist \
                       CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS=""
-         - name: List schemes
-       script: |
-       xcodebuild -list -workspace ios/App/App.xcworkspace               
+      - name: List schemes
+        script: |
+          xcodebuild -list -workspace ios/App/App.xcworkspace
     artifacts:
       - $HOME/build/*.ipa
