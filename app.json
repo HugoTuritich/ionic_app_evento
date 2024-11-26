@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "ionic-app-base",
+    "slug": "ionic-app-base",
+    "version": "1.0.0",
+    "sdkVersion": "48.0.0",
+    "platforms": ["ios", "android"],
+    "extra": {
+      "eas": {
+        "projectId": "c21b6bc5-6f6f-4c61-8259-5fb6a1d0b49f"
+      }
+    }
+  }
+}
