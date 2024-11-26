@@ -4,9 +4,6 @@ workflows:
     environment:
       xcode: latest
       node: latest
-      # Define las variables de entorno aquí si es necesario
-      # Ejemplo:
-      # API_KEY: your_api_key_here
     triggering:
       events:
         - push
@@ -36,3 +33,4 @@ workflows:
                       -exportOptionsPlist ios/App/ExportOptions.plist
     artifacts:
       - $HOME/build/*.ipa
+
