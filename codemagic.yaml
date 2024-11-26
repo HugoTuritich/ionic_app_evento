@@ -2,12 +2,11 @@ workflows:
   ios-build:
     name: Build iOS App
     environment:
-      vars:
-        # Agrega aquí las variables de entorno necesarias
-        # como API keys, etc. Ejemplo:
-        # API_KEY: your_api_key_here
       xcode: latest
       node: latest
+      # Define las variables de entorno aquí si es necesario
+      # Ejemplo:
+      # API_KEY: your_api_key_here
     triggering:
       events:
         - push
