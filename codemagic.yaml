@@ -24,5 +24,8 @@ workflows:
                       -exportPath $HOME/build \
                       -exportOptionsPlist ios/App/ExportOptions.plist \
                       CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS=""
+         - name: List schemes
+       script: |
+       xcodebuild -list -workspace ios/App/App.xcworkspace               
     artifacts:
       - $HOME/build/*.ipa
