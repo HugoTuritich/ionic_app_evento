@@ -1,0 +1,39 @@
+workflows:
+  ios-build:
+    name: Build iOS App
+    environment:
+      vars:
+        # Agrega aquí las variables de entorno necesarias
+        # como API keys, etc. Ejemplo:
+        # API_KEY: your_api_key_here
+      xcode: latest
+      node: latest
+    triggering:
+      events:
+        - push
+        - pull_request
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Build Ionic app
+        script: |
+          npm run build
+      - name: Sync Capacitor plugins
+        script: |
+          npx cap sync ios
+      - name: Build iOS app
+        script: |
+          xcodebuild -workspace ios/App/App.xcworkspace \
+                      -scheme App \
+                      -sdk iphoneos \
+                      -configuration Release \
+                      -archivePath $HOME/build/App.xcarchive archive
+      - name: Export .ipa file
+        script: |
+          xcodebuild -exportArchive \
+                      -archivePath $HOME/build/App.xcarchive \
+                      -exportPath $HOME/build \
+                      -exportOptionsPlist ios/App/ExportOptions.plist
+    artifacts:
+      - $HOME/build/*.ipa
