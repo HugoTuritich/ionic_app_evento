@@ -17,7 +17,7 @@ workflows:
         script: |
           echo "Building iOS app without signing..."
           xcodebuild -workspace ios/App/App.xcworkspace \
-                      -scheme app \
+                      -scheme App \
                       -sdk iphoneos \
                       -configuration Release \
                       -archivePath $HOME/build/App.xcarchive archive \
@@ -32,4 +32,3 @@ workflows:
                       CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS=""
     artifacts:
       - $HOME/build/*.ipa
-
