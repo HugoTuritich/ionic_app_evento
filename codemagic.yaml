@@ -12,7 +12,7 @@ workflows:
       - name: Build iOS app without signing
         script: |
           xcodebuild -workspace ios/App/App.xcworkspace \
-                      -scheme ALL_BUILD \
+                      -scheme app \
                       -sdk iphoneos \
                       -configuration Release \
                       -archivePath $HOME/build/App.xcarchive archive \
