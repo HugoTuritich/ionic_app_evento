@@ -1,6 +1,6 @@
 workflows:
   ios-build:
-    name: Build iOS App
+    name: Build iOS App Without Signing
     environment:
       xcode: latest
       node: latest
@@ -18,19 +18,20 @@ workflows:
       - name: Sync Capacitor plugins
         script: |
           npx cap sync ios
-      - name: Build iOS app
+      - name: Build iOS app without signing
         script: |
           xcodebuild -workspace ios/App/App.xcworkspace \
                       -scheme App \
                       -sdk iphoneos \
                       -configuration Release \
-                      -archivePath $HOME/build/App.xcarchive archive
+                      -archivePath $HOME/build/App.xcarchive archive \
+                      CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS=""
       - name: Export .ipa file
         script: |
           xcodebuild -exportArchive \
                       -archivePath $HOME/build/App.xcarchive \
                       -exportPath $HOME/build \
-                      -exportOptionsPlist ios/App/ExportOptions.plist
+                      -exportOptionsPlist ios/App/ExportOptions.plist \
+                      CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS=""
     artifacts:
       - $HOME/build/*.ipa
-
