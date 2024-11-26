@@ -29,3 +29,7 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+# Ignore the problematic file
+java/OpenJDK21U-jdk_x64_windows_hotspot_21.0.5_11.msi
+
