@@ -13,6 +13,7 @@ workflows:
         script: |
           echo "Installing CocoaPods dependencies..."
           cd ios/App
+          npm install
           pod install
       - name: List schemes
         script: |
