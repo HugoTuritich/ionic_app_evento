@@ -14,7 +14,7 @@ def capacitor_pods
   pod 'CapacitorCommunityBarcodeScanner', :path => '../../node_modules/@capacitor-community/barcode-scanner'
 end
 
-target 'miapli' do
+target 'App' do
   capacitor_pods
   # Add your Pods here
 end
