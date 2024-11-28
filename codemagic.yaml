@@ -38,9 +38,9 @@ workflows:
         script: |
           echo "Exporting .ipa file..."
           xcodebuild -exportArchive \
-                      -archivePath $HOME/build/App.xcarchive \
-                      -exportPath $HOME/build \
-                      -exportOptionsPlist ios/App/ExportOptions.plist \
+          -archivePath /path/to/App.xcarchive \
+          -exportPath   /path/to/output/folder \
+          -exportOptionsPlist /path/to/simpleExportOptions.plist
                       CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS=""
     artifacts:
       - $HOME/build/*.ipa
