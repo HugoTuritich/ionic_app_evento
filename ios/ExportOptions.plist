@@ -7,9 +7,9 @@
     <key>signingStyle</key>
     <string>manual</string>
     <key>stripSwiftSymbols</key>
-    <false/>    
-    <string></string>
+    <false/>
     <key>compileBitcode</key>
     <false/>
 </dict>
 </plist>
+
