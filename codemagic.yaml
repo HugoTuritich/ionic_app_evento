@@ -32,14 +32,20 @@ workflows:
           echo "Installing Fastlane..."
           gem install fastlane
       
-      - name: Run Fastlane
+      - name: Set Fastlane Environment Variables
         script: |
-          echo "Running Fastlane..."
+          echo "Setting Fastlane environment variables..."
           export FASTLANE_SKIP_CONFIRMATION="true"  # Desactiva las interacciones de Fastlane
-             echo "Running Fastlane..."
           export FASTLANE_USER="hturitich2011@hotmail.com"
           export FASTLANE_PASSWORD="Dolp23003"
           export FASTLANE_APPLE_ID="Hugo Turitich"
+          # Cargar la sesión desde el archivo txt
+          export FASTLANE_SESSION=$(cat $PWD/fastlane_session.txt)  # Asegúrate de que la ruta del archivo sea correcta
+          echo "FASTLANE_SESSION loaded successfully"
+
+      - name: Run Fastlane
+        script: |
+          echo "Running Fastlane..."
           cd ios
           fastlane beta  # Aquí puedes colocar el nombre de la lane que desees ejecutar (ej. beta, release, etc.)
       
@@ -69,4 +75,3 @@ workflows:
 
     artifacts:
       - $PWD/build/ipa/*.ipa
-
