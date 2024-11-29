@@ -47,7 +47,7 @@ workflows:
         script: |
           echo "Running Fastlane..."
           cd ios
-          fastlane beta  # Aquí puedes colocar el nombre de la lane que desees ejecutar (ej. beta, release, etc.)
+          fastlane run  # Aquí puedes colocar el nombre de la lane que desees ejecutar (ej. beta, release, etc.)
       
       - name: Build iOS app without signing
         script: |
