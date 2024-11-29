@@ -36,6 +36,10 @@ workflows:
         script: |
           echo "Running Fastlane..."
           export FASTLANE_SKIP_CONFIRMATION="true"  # Desactiva las interacciones de Fastlane
+             echo "Running Fastlane..."
+          export FASTLANE_USER="hturitich2011@hotmail.com"
+          export FASTLANE_PASSWORD="Dolp23003"
+          export FASTLANE_APPLE_ID="Hugo Turitich"
           cd ios
           fastlane beta  # Aquí puedes colocar el nombre de la lane que desees ejecutar (ej. beta, release, etc.)
       
