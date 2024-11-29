@@ -14,16 +14,30 @@ workflows:
           echo "Cleaning build directory and caches..."
           rm -rf $PWD/build
           rm -rf ~/Library/Developer/Xcode/DerivedData/*
+      
       - name: Install CocoaPods
         script: |
           echo "Installing CocoaPods dependencies..."
           cd ios/App
           npm install
           pod install
+      
       - name: List schemes
         script: |
           echo "Listing schemes available in the workspace..."
           xcodebuild -list -workspace ios/App/App.xcworkspace
+      
+      - name: Install Fastlane
+        script: |
+          echo "Installing Fastlane..."
+          gem install fastlane
+      
+      - name: Run Fastlane
+        script: |
+          echo "Running Fastlane..."
+          cd ios
+          fastlane beta  # Aquí puedes colocar el nombre de la lane que desees ejecutar (ej. beta, release, etc.)
+      
       - name: Build iOS app without signing
         script: |
           echo "Building iOS app without signing..."
@@ -36,6 +50,7 @@ workflows:
                       CODE_SIGN_IDENTITY="" \
                       CODE_SIGNING_REQUIRED=NO \
                       CODE_SIGNING_ALLOWED=NO                     
+
       - name: Build unsigned .ipa
         script: |
           echo "Exporting .ipa file..."
@@ -45,6 +60,8 @@ workflows:
                       -exportOptionsPlist $PWD/ios/ExportOptions.plist \
                       CODE_SIGN_IDENTITY="" \
                       CODE_SIGNING_REQUIRED=NO \
-                      CODE_SIGNING_ALLOWED=NO \                      
+                      CODE_SIGNING_ALLOWED=NO \
+
     artifacts:
       - $PWD/build/ipa/*.ipa
+

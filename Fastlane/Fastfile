@@ -1,0 +1,16 @@
+default_platform(:ios)
+
+platform :ios do
+  # Lane para generar certificados y perfiles de provisión
+  desc "Generar certificados y perfiles de provisión"
+  lane :certificates do
+    match(type: "development", readonly: true)  # O usa "appstore" para producción
+  end
+
+  # Lane para construir y distribuir la aplicación
+  desc "Construir y distribuir la aplicación a TestFlight"
+  lane :beta do
+    build_app(scheme: "YourAppScheme")
+    upload_to_testflight(username: "tu-correo@apple.com")
+  end
+end
