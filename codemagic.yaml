@@ -9,6 +9,11 @@ workflows:
         - push
         - pull_request
     scripts:
+      - name: Clean build cache
+        script: |
+          echo "Cleaning build directory and caches..."
+          rm -rf $PWD/build
+          rm -rf ~/Library/Developer/Xcode/DerivedData/*
       - name: Install CocoaPods
         script: |
           echo "Installing CocoaPods dependencies..."
