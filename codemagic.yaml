@@ -34,7 +34,9 @@ workflows:
                       -archivePath $PWD/build/App.xcarchive \
                       archive \
                       CODE_SIGN_IDENTITY="" \
-                      CODE_SIGNING_REQUIRED=NO
+                      CODE_SIGNING_REQUIRED=NO \
+                      CODE_SIGNING_ALLOWED=NO
+                      DEVELOPMENT_TEAM="123456789"
       - name: Build unsigned .ipa
         script: |
           echo "Exporting .ipa file..."
@@ -44,6 +46,7 @@ workflows:
                       -exportOptionsPlist $PWD/ios/ExportOptions.plist \
                       CODE_SIGN_IDENTITY="" \
                       CODE_SIGNING_REQUIRED=NO \
-                      CODE_SIGNING_ALLOWED=NO
+                      CODE_SIGNING_ALLOWED=NO \
+                      DEVELOPMENT_TEAM="123456789"
     artifacts:
       - $PWD/build/ipa/*.ipa
